@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Buku</title>
+<style>
+  body {
+    background: #e8e3d8;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #3a3632;
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .book {
+    background: #f5f0e4;
+    width: 100%;
+    max-width: 640px;
+    min-height: 520px;
+    padding: 60px 70px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    box-sizing: border-box;
+  }
+  .page {
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: justify;
+    font-weight: 300;
+    white-space: pre-wrap;
+  }
+  .page p {
+    margin: 0 0 1em 0;
+    font-weight: 300;
+  }
+  .footer {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #5a534a;
+    font-size: 14px;
+  }
+  button {
+    background: transparent;
+    border: 1px solid #8a8275;
+    color: #5a534a;
+    padding: 8px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  button:hover:not(:disabled) {
+    background: #ebe5d6;
+  }
+  button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .indicator {
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="book">
+  <div class="page" id="page"></div>
+</div>
+
+<div class="footer">
+  <button id="prev">‹ Sebelumnya</button>
+  <span class="indicator" id="indicator">Halaman 1</span>
+  <button id="next">Selanjutnya ›</button>
+</div>
+
+<script>
+  // ===== GANTI TEKS DI SINI =====
+  const text = ` BAB 3 PART 1
+  
+  Suatu hari. Pada pagi yang cerah. Di perkemunginan Kampung. Terlihat lah sebuah deretan rumah berjajar dari ujung ke ujung. Begitu panjang dan rapih. Dan lingkungan yang begitu bersih.
+
+Sejak saat itu tersisi lah di sebuah kamar. Dan kamar itu adalah jay. Yang Sedang tertidur.. 
+
+Kelihatan nya ia sangat capek. Entah dari mana. Karna kantung Mata nya hitam seperti bercak kera.
+
+Lalu tak lama detik kemudia.
+
+Jay terbangun dari tidur nya 
+
+Ia menggosok Leher nya sambil nguap dan melihat arah kemanaemana mana
+
+Huoammm...... 
+
+Lalu jay melihat ponsel dari atas rak itu dan melihat sebuah Jam pukul 08:12 pagi.. 
+
+Hmmmm... Aa... Lapar lah...
+
+Lalu ia keluar dari keranjag kasur nya dan keluar dari kamar nya itu...
+
+Setelah jay keluar ia melihat Bibi Sedang masal di depan nya. Dan melangkah menghapiri Bibi..
+
+Hmm...
+
+Melihat meja dengan penuh lauk
+
+Biiii.... Ada yang Bisa Aku Bantu *Kata jay..
+
+Ah... Kamu sudah bangun ternyata.. udah Kok. Eh tapi ada cuman Nanti Aja lebih baik kamu Mandi dulu lalu sarapan.. *Kata Bibi dengan memasak sambil berburu buru
+
+Hmm *jay kebingungan 
+
+Kek nya Bibi lagi buru buruk emang nya mau kemana?... *Kata jay
+
+Ga kemana mana... Tadi bi cuman telat Bangun terus lupa siapin masal buat kalian di sini jay mangkanya Bibi siapin cepet cepet sebelum kalian brangkat...
+
+Ohh... Yaudah bi semangat... Kalo ada sesuatu yang mau di Bantu bilang yah bi..
+
+Lalu Bibi itu tersenyum dan tertawa kecil
+
+Haha. .. Iya Nak makasih yah. Udah kamu Mandi dulu setelah itu panggil temen temen Kos mu ke sini...
+
+Jay mengelung pala nya
+
+Iya bi..
+
+Setelah itu jay pun Mandi dan membersihkan diri. Dan pergi kekamar. Untuk rapihin tempat tidur nya sekalian...
+
+Lalu jay keluar dari dapur Kos dan memanggil yang lain nya..
+
+Tiba tiba tak dari suara apapun dari belakang jay ada orang yang memanggil nya
+
+Oiii... Jay..
+
+Jay menoleh..
+
+Huh?... Ah... Kenapa??
+
+Lalu orang itu memapiri jay seketika.
+
+Pagi bro... *Ucap orang itu
+
+Oh Iya pagi ada apa teriak teriak begitu...
+
+Ohh itu. Ya tadi gua mau ngajak sesuatu  ...
+
+Jay pun bingung dan bertanya..
+
+Hmm?? Kemana ATU.. *seketika orang itu tersenyum dan bilang
+
+Iya ke pantai bunga...
+
+Jay pun menggelengkan kepala nya..
+
+Huh? Pantai bunga? Emang ada yah
+
+Ada cuy di belakang pulau ini. Kata nya air nya sejuk terus ombak nya tinggi tinggi. Bisa Kali kita semua kesana main... Sekalian liburan hahahaha *ketawa orang itu...
+
+Ohhhh hahaha... Baru denger gua juga ada Taman pantai begitu yah.. emang kek gimana bentuk nya?.. *jawab jay
+
+Biasa Aja kek model di Kota tapi.. Kali ini beda cuy sepinggiran nya tuh penuh bunga bunga yang Baru mekar. 
+
+Kata nya sih mekar nya langkah bertahun Tahun Kata nya.. mangkanya gua ngajak kesempatan kita kesana sebelum bunga itu mati..
+
+Jay pun ketawa sambil memegang kepala nya..
+
+Hahaha. Lucu Lu... Mana ada bunga mati secepar itu. Kecuwali kalo emang Ga bisa menjaga.. maka rusak lah bunga itu Ga mungkin mati Karna sendirian nya..
+
+Hmm Iya juga sih... Tapi gua dengar dengar dari medsos Kata nya hehehe
+
+
+Haduh dasar... Yaudah lanjut Nanti.... Ajak yang lain bre makan dah di siapin Bibi.. tadi dia Nyuruh gue panggil panggil kita..
+
+Orang itu pun mengeruhkan jempol nya
+
+Oke siap itu mah
+
+Lalu mereka tertawa bersama.. dan seketika mereka berpisah yang 1 memanggil Lawan nya yang 1 pergi ke kedai runci...
+
+Seketika semua nya sudah berkumpul 
+
+Selamat makan...
+Selamat makan 
+Makan semua nya...
+
+Ramai ramai wanita dan kaki kaki di situ sailing mengucap sailing Tawar makan bersama. 
+
+Sehingga lah ahkir perut mereka keyang....
+
+Tak lama kemudian..
+
+Orang tadi berseru serum manggil semua nya. Dan berkat.
+
+Hey semua nya... Perhatikan Aku dikit..*menghela nafas..
+Jadi gini.. Karna kita semua Sedang libur begini.. mending.... Gimana Kali kita liburan yuk...
+
+Lalu wanita lain yang berada di pokok berkata
+
+Hmm.. ayo Aja.. tapi kemana
+
+Yang lain pun bertanya juga
+
+Iya boleh.. tapi kemana nih..
+
+Ayo.. kemana Aku juga bosen di Kos doang...
+
+Lalu Bibi yang denger itu datang sambil juga membawa sayuran dari luar..
+
+Hala Hala... *Sambil tertawa... 
+
+Hahaha kalian ini... Mau pada kemana sigh.. emang di sini Ga seru banget yah???. Ucap Bibi...
+
+Lalu prempuan tadi berkata
+
+Seru mi.. tapi kurang tempat main nya Aja...
+
+Lalu Bibi tertawa birang birang 
+
+Hahaha... *Yang lain juga ikut tertawa
+
+ada ada Aja. Di Kira Kos anak kecil yang punya gairah Taman... Hade ... Mending Kata Bibi begini...
+
+Bibi menoleh kemereka semua...
+
+Dari pada ngusik Jalan makan debu doang kalian mending ke pantai yang lagi trend tuh....
+
+Lalu orang yang tadi mengajak nya bilang..
+
+NAHH itu tadi yang Aku mau bilang ke pantai yang trend itu..  nama nya flower island... Rame banget cuy Karna Banyak Taman warna warni ples laut nya juga adem ayem...
+
+Bibi pun mulai bertanya...
+
+Hahaha.. sebisa nya sih tapi Kata Bibi. Mulai Aja soal nya ticket masuk nya juga  lagi murah Karna Baru AWAL banget tuh jadi diskon nya lagi yah gitu....
+
+Iya *Kata orang itu
+
+Gimana Teman Teman mau gak kita kesana...
+
+Lalu cowo dari pokok berkata juga
+
+Iye tapi Lu Traktir yah... 
+
+Hahahaha *semua nya tertawa.
+
+Hadee beban dompet cuman ngepanjang kesusahan orang Aja.. iye deh Nanti gw Traktir buat makanan dalam tapii... Hahaha
+
+Hahahaha *tertawa lagi semua
+
+Serius yah *ucap prempuan dari pojok tadi..
+
+Ahkir nya orang itu dengan pasrah menjawab
+
+Hehhhh.... Iya deh asal kalian ikut tapi dah .. dah lah dompet berlobang lagi ini mah
+
+
+Hahaha *tertawa lagi semua...
+
+Bibi langsung tersenyum juga
+
+He hehehe ada ada Aja.. udah kalian siap siap Aja dulu sana 
+
+Siap bi *lalu semua nya pun berdiri dan bersih bersih...
+
+Tak berselang detik
+
+Bibi pun tiba tiba memanggil jay..
+
+Jay!!!
+
+
+Jay menoleh.
+
+Hm? Iya bi?..
+
+Sini deh Bantu Bibi bentar boleh?..
+
+Ohh boleh bi apa tuh...
+
+Lalu Bibi mempersiap sebuah plastic berisi makanan
+
+Dan mengelur ke jay..
+
+Huh apa ini bi.. 
+
+Tolong kamu bisa Bantu mi antar ini kan. Kamu bisa undur sedikit pergi nya...
+
+Lalu jay pun langsunvkaget dan berkata
+
+Huh kenapa Saya?. Kan Masih ada yang lain kenapa Ga Minta mereka Aja...
+
+Bibi pun meberi muka muset
+
+Heh cuk cuk cuk ssshhh... Kamu Kata nya tadi kalo ada apa apa yang mau di Bantu bilang Aja ke kamu. Yah udah bi minta bantuan lah. 
+
+Lalu jay terheran dan ahkir nya pasrah
+
+Hahh??? Alaaa pulak dah...
+
+
+Hahaha *Bibi pun tertawa..
+
+Lalu setiba nya di suatu Jalan. Bersampiran dengan air laut yang berkilauan. 
+
+Burung burung menerpa di atas langit.. bagaikan ckrawala yang Indah pada teriak panas nya di sana..
+
+Jay Sedang berkendara menaiki motor dengan santai dan menikmati Alam yang begitu Indah saat dini.
+
+Sampai lah Banyak pedagang di pesisir Jalan itu. Ads yang Jalan buah buahan. Makanan, mainan, serta alat alat rumah dan lain lain nya. Seperti pasar semejak masa masa priode lama..
+
+Entah begitu terasa pemandang di tempat itu seseru itu terlihat
+
+Setiba menikmati suasana
+
+Lalu tiba lah sebuah tempat Kampung lain atau di sebut sebuah perumahan... 
+
+Yang begitu Banyak orang dan Anak Anak yang bermain.
+
+Jay tetap fokus pada tujuan nya..
+
+Sambil mengiringi Lagu di pikiran nya..
+
+Setiba nya Sampai di rumah pembeli..
+
+Jay turuun dan memotrek rumah tersebyt
+
+Kirk *suara HP nya
+
+Sip
+
+Langkah jay menuju ke pagar rumah itu
+
+Permisi!!...
+
+ Pesanan.
+
+Suara dari dalam rumah menjawab
+
+Iya swbentar...
+
+Berlanjut lah mereka seperti pembelian barsng..
+
+Lalu setelah terahkir itu.  Jay kembali pulang tapi tidak sepenuh nya yang kita ketahui...
+
+Sesaat jay Sampai di gang keluar itu muncul lah wanita. Dari Kiri.. dengan sangat cepat..
+
+Lalu....
+
+Shhhss
+
+Jay mengerem mendadak wanita itu menoleh lalu lompat ke belakang dengan cepat dari kejadian itu...
+
+Jay pun sempat kaget. Dan lalu mebghadap wanita itu. Ia pun juga membuka helm nya.
+
+Woi... Kalo mau nyebrang lihat li...
+*Berhenti lah ucapan itu 
+
+Jay pun melihat dengan Mata terbuka lebar...
+
+Dan ternyata wanita itu adalah...
+
+Hirara..
+
+Mereka bertemu kembali di tempat itu..
+
+Hirara pun ikut bengong dan bingung .
+
+Huh?
+
+Namun wajah nya Masih cemberut tidak ada ekspresi Hal yang menekan...
+
+K-kamu?? *Ucap mereka berdua bersama..
+
+Jay mulai menaykan pertaanyaan...
+
+K.. kk.. kamu Ga papa?? M.. mm..MAAF tadi yah Aku... Aduhhg malah.. hampir Aja Ga kenapa napa..
+
+Wanita itu pun enggan menjawab... Namun balasan nya 
+
+Huh... Tolong menjauhlah Aku Sedang buru buru.. 
+
+Sambil seherentak Kata Kata nya
+
+Jay pun Masih terheran Karna dari kemaren tidak ada rumah nya..
+
+Lalu dengan singkat nya wanita itu malah melanjutkan perjalanan nya....
+
+Tapi jay malah menghentikan langkah nya demi pertaanyaan.
+
+
+Ehh tunggu ucap jay...
+Kamu mau kemana?
+
+Wanita itu menoleh dengan tatapan tajam
+
+Dan berkata...
+
+Apakah sehari bertemu cukup. Sudah lah ini bulan urusan mu. Jangan ganggu Aku
+
+Lalu jay pun mengerti dari perkataan itu
+
+Lalu jay pun langsunv menjawab nya
+
+Aa... Ahh baik lah
+
+ MAAF mengganggu kenyamanan mu Aku mengerti.. silakan lanjutan perjalanan mu...
+
+Lalu wanita itu sedemkian lanjut berjalan tanpa memberi sebuah jawaban pada jay..
+
+Tapi jay sedemkian rupa tidak benci melainkan ia malah menyalahkanbdiri nya sendiri Karna telah mengganggu nya..
+
+Tak selang pun jay melanjutkan perjalanan nya tapi bukan arah pulang namun berkeliling di perumahan itu. 
+
+Sedikit demi sedikit ia berkeliling ia pun pergi paling ujung perumahan itu dan terlihat lah di sana sebuah pihon besardan depan nya danau bercampur lautan dan di sana Jalan nya seperti labirin...
+
+Begitu besar dan berbagian di sana. 
+
+Jay pun ahkir nya mendatangi tempat tersebut...
+
+Melangkah demi langkah .
+
+Haaaa .. *jay menikmati suasana yang begitu damai tenanng di sana dengan pemandang yang begitu Indah sekali..
+
+Tak lama ada orang dari rumah tepatvdekat di depan nya..
+
+Seorang paman datang menghampir jay..
+
+Hello!!!
+
+Jay tersebut lalu mebghadap paman tersebut...
+
+Ahh. Yah siapa??? *Dengan ekspresi yang kaget bukan main...
+
+Oh MAAF seperti nya Saya mengkagetin kamu yah
+
+Jay pun tertawa
+
+Ouhh hahaha engga Kok Pak
+
+Kamu dari mana?
+
+Lalu jay menjawab dengan gugub sekali..
+
+Ohhhh itu Saya bukan orang dari sini.. Saya dari Kampung setelah
+
+Hmm.. ohhhh Kampung sebelah yah..
+
+Iya apa paman Tahu?
+
+Tentu.. itu tempat paman berada dulu.. tapi sekarang sudah tidak. Kami pindah Karna sesuatu lalu pergi ke sini dan ahkir nya damai tenanng tanpa masalah
+
+Jay pun seketika kebingungan sekejap dan bertanya lagi..
+
+Hah? Masalah??? Ada apa?
+
+Hahahaha *paman itu tertawa
+
+Kamu memang Ga tau yah? Masa Ga tau? 
+
+Lalu jay pun mengungkapkan dengan detail asal ia 
+
+Ahh... Jadi gini paman... Saya tuh asli nya bukan tempat dari sini. Saya orang Kota..
+
+Lalu paman itu terkejutejut...
+
+Huh? Orang Kota???... 
+
+Jay pun kaget swbentar juga Karna paman itu thba tiba terasa ada menjanggal nya..
+
+I-iya paman... Mangkanya Saya Ga tau apa apa Tentanv pulau ini. Apalagi Baru saja Sampai di sini...
+
+Paman pun berhenti sejenak dan wajah nya terlihat Sedang memikirkan sesuatu...
+
+Hmmmm... Saya boleh bertanya gak??...
+
+Lalu jay menoleh hmm Iya boleh ada apa?...
+
+Jika kamu asal dari Kota. Kamu pernah pergi ke Kaum pemerintah yang isi nya adalah pelayanan bantuan masyarakat?...
+
+Ohh MAAF paman. Saya Ga pernah kesitu. Memang nya ada apa yah...
+
+Paman itu pun Masih berpikir..
+
+Oh begitu yah.. baik lah tidak apa apa.. sekira nya kalo memang kamu ada di sana ada beberapa pertaanyaan yang penting untuk saya tanyakan. 
+
+Jay pun mengerti setidak nya pulau ini begitu Banyak cerita yang Belum ia Tahu. Bahkan paman ini saja menjelasakn yang sudah jelas jelas Hal itu..
+
+Jay pun terdiam dan mulai Sadar bahwa pulau ini ada masalah terkait nya pada orang orang Kota tempat nya itu..
+
+Baik paman. Sekira nya kalo ada masalah jangan sungkam sungkam untuk berbicara... 
+
+Paman itu menoleh dan mengucap makasih yah Nak...
+
+Mereka pun tertawa kecil lalu mengahli pandangan pada laut itu..
+
+Lalu sunyi lah tiba tanpa ada Nada sedikit pun...
+
+Tapi paman itu berbicara lagi...
+
+Oh Iya.. kalo boleh Tahu...
+
+Hmmmm... *Jay menoleh..
+
+Apakah orang Kota kalian di sana begitu Ramah atau gimana gitu.. keadaan nya...
+
+Lalu jay mulai memahami nya
+
+Oh tidak juga selalu sempurna paman.. eee sekira nya sih di sana agak berantakan hehehe... 
+
+Paman itu terbingung 
+
+Hmm berantakan?? Ada apa di sana
+
+
+Yah begitu.. di sana tidak selalu nya sempurna.. Banyak sekali masalah yang Terus menimbulkan.. entah itu ekonomi.. keadilan.. bahkan Adab Adab tertentu. Semua nya berantakan pokok nya...
+
+Paman itu pun tidak mengerti apa yang di ucapkan jay tapi ia sedikit memahami nya
+
+Hmm... MAAF paman engga ngerti deh Bisa jelasin kenapa tuh...
+
+Jay pun menoleh lalu menoleh kembali swbentar ke laut..
+
+Jadi ya..
+ Pemerintah kita tuh kan Masih sama..
+Di sana Banyak kesulitan yang di alami masyarakat.. yaitu makanan Harga nya melunjak.. ekonomi mulai memanas.. masyarakat pada demo, dan Banyak juga kelakuan Adab Adab yang sudah rusak pada sebagian tradisi kita di sini...
+
+Pemerintah itu mulai mengerti...
+
+Ohh begitu berarti di sana lagi demo besar besaran yah..
+
+Lalu jay mengelung kan kepala nya
+
+Yaa.. Karna pemerintah kita tidak ADIL suara Rakyat terus di bungkam bahkan uang nya saja hanya di suap tapi tidak mendengarkan suara Rakyat nya..
+Memang miris dan kita semua udah Ga tau lagi harus apa...
+
+Paman pun sudah mengerti lalu ia juga menceritakan masalah nya secara pelahan.
+
+Hmm... Ternyata begitu...
+
+Paman begitu juga kah??. Apakah di pulau ini sama seperti itu...
+
+Lalu paman itu mengelungkan kepala.
+
+Ya begitu.. di sini kamu juga Ga bakal Tahu betapa miris nya tempat ini.. kami juga ada beberapa masalah yang di alami pulau ini. Dan meminta bantuan tapi tetap tanpa respon mereka...
+
+Cuman di diamkan Sampai hanya menjadi betabur tanah...
+
+Lalu jay pun mengolo wajah nya dengan penasaran
+
+Ohh yah??.. begitu... Pantas saja di pulau ini terlihat beda. Saya pergi kemana mana Banyak sekali Hal yang begitu agak mengkawatirkan.. tenyata begitu.. Saya mengerti...
+
+Yah begitu lah.. pemerintah memang tidak ADIL yang yang sudah di berikan terus dibuang hanya untuk diri sendiri tapi bagi Rakyat nya ia tidak bekerja. Pas viral Baru lah ia bekerja.. begitu lah...
+
+Lalu jay berpikir sejenak dan ternyata dia sudah memahami kondisi pulau ini...
+
+Ternyata pulau ini bukan lah tempat yang begitu tenanng tapi penuh cerita yang mendalam Sampai lah terlihat bahwa pulau ini lebih susah dari pada di Kota...
+
+Lalu jay pun berbicara dengan dengan paman itu..
+
+Hmm Iya sih.. keterlauan pemerintah nya. Udah di kasih makan tapi Masih bikin drama mulu.. ini udah kelewatan kalo gini terus negara kita akan hancur..
+
+Lalu paman itu pun setuju
+
+Iya itu seharus nya pemerintah itu di hukum saja atau bagimana. Karna ia tidak ada takut takut nya dengan masyarakat.. sudah di kasih yang terbaik malah milih yang buruk.. 
+
+Saya juga sudah muak dengan ekonomi miris seperti ini...
+
+Jay pun tertawa sejenak...
+
+Haha... Iya Bisa tapi Tahu lah tidak akan Bisa sih paman.. terlihat susah Karna pemerintah kita Bisa membeli manusia untuk menjaga nya apalagi hukum yang berlaku...
+
+Dan juga aneh yah.. kenapa semesti nya harus mau uang hanya demi 1 orang yang di jaga... Aku juga bertanya Hal Hal itu... Kek Ga ada pemikiran gitu... Bekerja demi perakun itu..
+
+Hahaha *paman itu tertawa 
+
+Yah begitu lah... Kadang yang Ga berharga Bisa di beli. Kadang juga yang ada berharga Baru Ga Bisa di beli. Tapi hanya di lihat sebagi Hal biasa tanpa pandang pikir tersebut..
+
+Jadi kamu juga jangan hanya Bisa berjanji di AWAL. Jika tujuan mu untuk membantu dan itu menjadi cita cita mu. Maka tepati lah janji itu.. jangan dibiarkan Sampai kamu hanya menikmati hasil dalam nya sama seperti pemerintah itu. Jangan seperti itu hanya mengecewakan Rakyat nya yang sudah memilih dia
+
+Lalu jay pun memahami dan ngelung kan kepala nya
+
+Ya kurang lebih begitu paman betul sekali.. terkadang semua nya juga hanya demi uang bekerja untuk diri nya sendiri... Tanpa Bisa mengenal yang lain untuk di mengerti...
+
+Sepakat *Kata paman itu..
+
+Lalu mereka tertawa bersama 
+Hahahahaha
+
+Baik lah paman Saya pergi dulu.. seperti nya Saya juga ada janji yang harus di tepati sama orang hehehe...
+Kata jay..
+
+
+Baik lah nak hari hati.. semoga lancar janji nya itu...
+
+Amin.. makasih
+
+Lalu ia mebalikan motor nya dan menyalakan nya...
+
+Paman itu berkata lagi..
+
+Oh Iya nama mu siapa?...
+
+Oh nama Saya jay paman...
+
+Lalu paman itu pun langsung terdiam
+Mengulangibkalimat itu
+
+Jay??.
+
+Iya paman.. kenapa paman Kok bengong begitu..
+
+Lalu paman kembali Sadar dan bilang
+
+Ohh bukan apa apa cuman keingat sesuatu Hal Aja oke hati hati yah Nak. Paman juga mau pergi kesana dulu...
+
+Iya paman...
+
+Lalu mereka berpisah di situ.. 
+
+Jay pun pulang...
+Dan paman itu pergi ke depan juga...
+
+Lalu tak berselang lama...
+
+Jay Baru saja Sampai di gang tersebut namun terlihat lah..
+
+Di sana ada hirara.. Sedang berdiri menunggu sesuatu..
+
+Huh?? Itukan hirara.. Kata jay
+
+Lalu ia berhenti sejenak tempat itu juga ramai dan jay mendekati hirara...
+
+Melangkah...
+...
+
+Hai. Kata nya
+
+...
+
+Rara tetap dingin tapi menoleh ke jay..
+
+Huh.. kamu lagi.. kenapa kamu Ga pulang yah???....
+
+Jay pun tersenyum sambil mengucap rambut belakang...
+
+Hehehe... Abis muter muter tadi..
+
+Dih *Kata Rara itu.. Ga usah sok akrab deh kek gitu...
+
+Dengan Kata dinging nya jay pun tertekan Sadar diri.. tapi ia tanpa ragu ragu tetap melanjutkan obrolan nya..
+
+Oh Iya MAAF... 
+
+Kalo boleh Tahu kenapa nunggu di sini apa Belum datang Teman mu?...
+
+Lalu hirara menjawab
+
+Ga usah ikut campur deh.. bukan urusan mu..
+
+Jay pun seketika tertekan lagi...
+
+Hmm.. Aku ngerti Kok walau kita bertemu kemaren tapi setidak nya apakah sikap mu begitu terus yah terhadap orang...
+
+... Hirara tetap diam..
+
+Jadi... Aku cuman bilang kalo boleh... Tidak semua orang yang di kenal harus sama.. tapi tidak juga dengan sikap seperti itu.. 
+
+... Masih tetap diam hirara itu..
+
+Oh Iya Aku mengerti... Baik lah..
+
+Jay menunduk kepala nya dan mebghadap kedepan...
+
+Lalu tak lama wanita itu menjawab nya...
+
+Aku tertinggal bus....
+
+Jay menoleh..
+
+Huh??..
+
+...
+
+Aku tertinggal bus.. sudah cukup?
+
+O-ohh... 
+
+Begitu... MAAF telah memaksa mu berbicara..
+
+...
+
+E-ehem.. aa mungkin Aku juga merasa kasihan pada mu.. tapi setidak nya tidak ikut. Kenapa mau tetap diam di sini?
+
+Lalu wanita itu melihat ke arah Jalan Raya..
+
+Aku nunggu di sini Sampai ada yang datang menjeput ku... Itu saja
+
+Hmm? Memang kamu sudah mengabari Teman mu?...
+
+Iya.. *jawab singkat nya .
+
+
+Kalo boleh Tahu memang nya kemana...
+
+Flowers indsalnd
+
+Wow.. kek nya kita sarah ke sana..
+
+Hirara menoleh jay
+
+Huh? Kenapa kau tiba tiba berkata begitu..
+
+Karna Aku juga akan ke situ bersama Teman Teman ku.. kalo gak sekalian kita bareng Aja kesana Karna Aku langsung ini
+
+Ha... Apa sih tiba tiba ngajak bareng Ga jelas..
+
+Lalu jay pun mengerti 
+
+Eh MAAF bikini Hal yang ga masuk akal tapi sekira nya Aku mau Bantu ini Aja.. 
+
+Ga perlu Kan Aku udah hububgin temen ku..
+
+Lalu telepon dari HP hirara berbunyu
+
+Ding ding... Ding 
+
+Huh...
+
+Shh swbentar.. lalu hirara menatap kebakang dan menjawab telepon itu..
+
+Lalu berbicara lah hirara dengan Teman nya.. dan tak di sangka.. 
+
+Selesai menelpon itu hirara menghebuskan nafas...
+
+Hufhh... 
+
+Jay pun menoleh dan kebingungan.
+
+Kenapa ada terjadi Hal sesuatu??
+
+Lalu hirara pun menjawab..
+
+Sudah la Aku mau pulang..
+
+Kok pulang?? Lah kenapa???..
+
+Temen ku ga bisa Karna terjadi masalah motor nya di saat perjalan...
+
+Dah Aku mau balik. Makasih tawaran mu...
+
+Ehhh tunggu.. *jay pun menghentikan hirara..
+
+Huh?? Apa lagi..
+
+ Bareng Aja... Aku tau Hal ini sangat bodoh tapi kamu emang Ga mau kehilangan kesempatan lagi Kan? *Kata jay 
+
+Lalu hirara berpikir tapi tetap dinging dan ber arah ke depan 
+
+Ga usah. Lain waktu juga Bisa kesana...
+
+Lalu jay menjawab nya lagi..
+
+Ra.. tidak ada Hal kesempatan Bisa di ulang lagi, Bisa sekali maupun 2x. Tapi Jika kau berfikir apakah Hari special ini kau anggap Bisa di pertemuan besok lagi? 
+
+Lalu hirara menatap nya... 
+
+Tiba tiba notif di ponsel nya keluar 
+Dan ternyata itu sebuah notif bunga terlangkah telah mekar Selama bertahunan kini ramai pengunjung dan orang orang melihat nya
+
+
+Lalu hirara pun berpikir lagi dan menatatap jay 
+
+Entah bagimana kelanjutan nya bikini geleng kepala. Tiba di perjalan 2 orang pemuda menaiki motor.. dan ternyata itu adalah jay dan hirara..
+
+Tidak heran ternyata hirara menaiki nya.
+Saat itu.
+
+Lalu sedemikian rupa hirara pun Masih bengong dalam perjalan nya.. dan melihat pemandangan laut itu..
+
+Lalu jay menoleh juga keluar itu sambil tersenyum
+
+Indah yah Alam di sini *Kata jay
+
+Huh? Iya.. *ucap singkat hirara.
+
+Lalu jay bilang lagi 
+
+Oh iya kamu lapar? Atau Haus? 
+
+Ha? Engga Masih Aman Kok ini. *Lalu hirara lihat pemandangan kembali di laut.
+
+Iya kalo ada apa apa bilang Aja kita bakal berhenti di kedai kalo memang Haus lah atau laper.. 
+
+Huh? Iya Iya.. makasih 
+
+Lalu jay menatap laut lagi dan mengalah pandangan ke depan lagi..
+
+Kamu tuh emang Banyak diem nya yah? Atau gimana?. 
+
+Huh? Apa?...
+
+Ohh.. Iya kamu Kok Banyak diem nya emang nya apa yang kamu pikirin?
+
+...
+
+Ohh bukan apa apa.. *lalu hirara memengkukan tangan nya. Lalu menyadar nya Di dada
+
+Ohh oke. Mungkin kamu Belum ada waktu untuk bercerita tapi Bisa lain Kali kalo memang sudah siap.. manusia juga wajar punya cerita maupun masalah nya sendiri tapi bagi nya yang selalu menahan itu. Itu tidak akan membuat mu terus maju, kau takut bercerita itu wajar tapi setidak nya biarkan hati mu terbuka agar ia menyembuhkan ruang nya sendiri sedikit demi sedikit...
+
+Lalu hirara pun terbukam dan kaget sejenak tapi tak bersuara. Lalu kembali lagi diam 
+
+Hening lah di Jalan hanya angin bersuara dari kecepatan motor itu dan suara laut yang Terus Bergema.
+
+...
+
+Aku takut *suara Bergema dari hirara
+
+Lalu jay menyadari itu lalu ia melihat sejenak kebelakang dan mengahli ke depan lagi..
+
+Um... Aku mengerti lain waktu Aja..
+
+...
+
+Dalam perjalan terus sunyim diam tanpa suara Sampai lah di pe simpangan Jalan ada seseorang mengalami Hal keributan entah dari apa masalah nya ..
+
+Ketika mereka berdua melihat jay pun berhenti sejenak di Jalan itu..
+
+Hey kenapa berhenti apa yang kau perhatikan? Kata hirara
+
+Eh swbentar...
+
+Lalu suara terikana orang berdua masalah itu.. terus mulai member..
+Ada 2 laki dan 1 wanita yang yang Sedang ribut di saat itu.. namun perbedaan nya ialah 1 laki itu lebih tua dan 1 nya itu seorang pemuda asal Kota yang terlihat. Dan 1 wanita itu merupakan istri dari bapa itu..
+
+YAUDAH CUMAN GITU DOANG APA MASALAH NYA... *Suara pemuda itu dengan rampant nya dan kertas nya suara nya.
+
+YAH MIKIR JUGA ANDA UDAH BESAR MASA MASIH DI SURUH SURUH. MIKIR LAH KESINI BUKAN CUMAN NGOTORI.. TAPI... (Terus lah suara Masih ribut itu
+
+Jay pun mendatangi mereka dan meninggali hirara swbentar...
+
+Tunggu swbentar yah Aku akan kembali...
+
+Hei tunggu ... Kata hirara
+
+
+Lalu jay melangkah kemereka..
+
+Hei hei hei.. Ada apa ini?? Kata jay
+
+INI SIAPA LAGI TIBA TIBA GABUNG SOK ASIK BANGET....  *Kata pemuda itu
+
+Bapa itu pun terdiam dan Masih mengenaskan emosi nya..
+
+Lalu jay pun menjawab dengan pemuda itu..
+
+Kok ngegas yah?? Saya Baru datang loh???..
+
+LAH situ ngapain tiba tiba datang.. udah Kata bensin habis Aja 
+
+Emang bensin Saya mau habis Nanti. Mangkanya ini Nanti mau ke arah pombensin kata jay
+
+Udah diem kau... Siapa sih tiba tiba datang datang Aja. 
+
+Jay pun langsung menanyakan bapa tersebut dan suara Anak muda itu dibukam.
+
+Huh... Oh Iya Pak Bisa jelasin Ada apa ini? 
+
+Ini Nak pemuda ini udah di bilang jangan buang Sampai sembarangan 
+Tapi tetap ngenyel gitu. Dia ngira tempat kedai kita ini Sampah Kali..
+
+
+EMANG SAMPAH! Kedai bapa tidak sedap berada di sini merusak pemandangan saja! *Kata pemuda itu 
+
+Lalu jay pun menodong ke dada nya 
+
+Udah udah. Santai dong jangan gitu. Bapa ini kan jualan buat biaya hidup, anda ga boleh ngomong kek gitu.... *Ucap Jay
+
+Lalu pemuda itu berkata kasar dengan kencang sekali di depan Jay.
+
+Hala bodoh amat suka suka saya! *Lalu ia menonjol arah ke Jay .
+
+Konflik nya mula memanas. Namun Jay hampir saja kena pukulan itu, ia menghindar pukulan itu...
+
+Lalu Jay pun tidak bisa diam 
+
+Wah... Ini kelewatan sih *lalu Jay pun memukul balik pemuda itu hingga terlempar jatuh.. 
+
+Pakkkkk... *Suara pukulan yang begitu kencang dari arah pipi pemuda itu..
+
+Ahkk.... Pemuda itu jatuh dan kesakitan pada pipi nya yang di pukul kencang itu..
+
+Gimana enak???.... Ga usah bikin rusuh di sini. Anda hanya buat meresahkan warga saja...
+
+Lalu pemuda itu bangung sambil emosi yang penuh 
+
+Iihhhh aaaaa.... *Lalu ia memukul balik ke Jay berkali kali..
+
+Namun Jay tetap terselamatkan ia berhasil menghindar dari pukulan itu berkali kali. Sambil langkah nya terus mundur di saat itu..
+
+Akhir nya tak lama 4 pukulan tak kena itu. Jay siap membalaskan nya. Ia memutar badan nya ke sebelah arah. 
+
+Lalu ia memukul nya dengan tangan kanan nya begitu kencang ke arah kepala pemuda itu..
+
+Pakkk......*suara pukulan nya begitu keras
+
+Ahkkkkk....... Pemuda itu langsung tepar lagi. Entah mengapa seperti nya ia tidak bisa beratem dalam kondisi nya begitu .
+
+Lalu pemuda itu ga kuat bangung ia hanya merintih kesakitan sambil memegang pipi nya...
+
+Lalu Jay jongkok di depan nya. 
+
+Udah gitu doang??
+Tadi awal nya jago banget kok udah tumbang kek ayam sayur..
+
+Jay menggelang kan kepala nya sambil tertawa kecil di situ
+
+Jika diri mu tidak bisa menghargai, maka jangan lah menjadi manusia yang bisa merasa bermanfaat.. tidak semua orang kau anggap sempurna lalu yang jelek kau buang begitu saja. Apakah dirimu memang selayak itu?...
+
+Pemuda itu pun terus memegang kepala nya sambil merintih kesakitan. Sambil langkah nya mundur kebelakang..
+
+Uhhh....
+
+...
+
+Hahaha, mangkanya utamakan adap mu. Lihat di akhir apakah sikap seperti itu seolah membuat mu keren?.. hahaha *Jay ketawa 
+
+Lalu Jay pun mengulurkan tangan nya ke pemuda itu..
+
+Ha... Apa apaan
+
+Jay pun masih terseyum dan berkata.. 
+
+Sudah bangun lah sini... Kita bisa membicarakan nya baik baik. Bagaimana kita damai saja? Aku tidak suka berkelahi. Dan aku juga tidak enak terhadap orang kesakitan seperti mu saat ini..
+
+Lalu Hirara lihat dari motor itu teriak 
+
+Jay apasih? Dia begitu di tolong?? 
+
+Jangan begitu *kata Jay..
+
+Setiap orang ada masalah nya sendiri. Tapi bagaimana kita damaikan?... Aku tahu niat dia jahat tapi setidak nya kita bisa lihat, mendengarkan cerita nya dan merubah dunia nya.  `;
+  // ==============================
+
+  const charsPerPage = 7000; // sesuaikan jika ingin halaman lebih panjang/pendek
+  const paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p);
+
+  // Gabung paragraf menjadi halaman
+  const pages = [];
+  let current = '';
+  paragraphs.forEach(p => {
+    if ((current + '\n\n' + p).length > charsPerPage && current.length > 0) {
+      pages.push(current.trim());
+      current = p;
+    } else {
+      current += (current ? '\n\n' : '') + p;
+    }
+  });
+  if (current.trim()) pages.push(current.trim());
+
+  let idx = 0;
+  const pageEl = document.getElementById('page');
+  const indicator = document.getElementById('indicator');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  function render() {
+    const lines = pages[idx].split('\n').map(line => {
+      if (!line.trim()) return '';
+      return `<p>${line}</p>`;
+    }).join('');
+    pageEl.innerHTML = lines;
+    indicator.textContent = `Halaman ${idx + 1} dari ${pages.length}`;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === pages.length - 1;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; render(); } });
+  nextBtn.addEventListener('click', () => { if (idx < pages.length - 1) { idx++; render(); } });
+
+  // Navigasi keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && idx < pages.length - 1) { idx++; render(); }
+    if (e.key === 'ArrowLeft' && idx > 0) { idx--; render(); }
+  });
+
+  render();
+</script>
+
+</body>
+</html>
